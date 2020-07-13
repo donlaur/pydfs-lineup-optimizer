@@ -1,17 +1,33 @@
-from pydfs_lineup_optimizer.settings import *
+from enum import Enum
 
 
-DFS_SITES = ["Yahoo", "FanDuel", "DraftKings", "FantasyDraft"]
-DFS_SPORTS = ["Basketball", "Football", "Hockey"]
-DFS_SETTINGS_DICT = {
-    ("Yahoo", "Basketball"): YahooBasketballSettings,
-    ("Yahoo", "Football"): YahooFootballSettings,
-    ("Yahoo", "Hockey"): YahooHockeySettings,
-    ("FanDuel", "Basketball"): FanDuelBasketballSettings,
-    ("FanDuel", "Football"): FanDuelFootballSettings,
-    ("DraftKings", "Basketball"): DraftKingsBasketballSettings,
-    ("DraftKings", "Football"): DraftKingsFootballSettings,
-    ("FantasyDraft", "Basketball"): FantasyDraftBasketballSettings,
-    ("FantasyDraft", "Football"): FantasyDraftFootballSettings,
-    ("FantasyDraft", "Hockey"): FantasyDraftHockeySettings,
-}
+class Site:
+    DRAFTKINGS = 'DRAFTKINGS'
+    FANDUEL = 'FANDUEL'
+    YAHOO = 'YAHOO'
+    FANTASY_DRAFT = 'FANTASY_DRAFT'
+    FANBALL = 'FANBALL'
+    DRAFTKINGS_CAPTAIN_MODE = 'DRAFTKINGS_CAPTAIN_MODE'
+    FANDUEL_SINGLE_GAME = 'FANDUEL_SINGLE_GAME'
+
+
+class Sport:
+    BASKETBALL = 'BASKETBALL'
+    FOOTBALL = 'FOOTBALL'
+    HOCKEY = 'HOCKEY'
+    BASEBALL = 'BASEBALL'
+    GOLF = 'GOLF'
+    SOCCER = 'SOCCER'
+    CANADIAN_FOOTBALL = 'CANADIAN_FOOTBALL'
+    LEAGUE_OF_LEGENDS = 'LEAGUE_OF_LEGENDS'
+    WNBA = 'WNBA'
+    MMA = 'MMA'
+    NASCAR = 'NASCAR'
+    TENNIS = 'TENNIS'
+
+
+class PlayerRank(Enum):
+    REGULAR = 1
+    PRO = 2
+    STAR = 3
+    MVP = 4

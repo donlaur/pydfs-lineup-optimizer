@@ -2,34 +2,41 @@
 pydfs-lineup-optimizer is a tool for creating optimal lineups for daily fantasy sport. 
 
 ## Installation
-To install pydfs-lineup-optimizer, simply:
+To install pydfs-lineup-optimizer, simply run:
 ```
 $ pip install pydfs-lineup-optimizer
 ```
 
 ## Support
-Now it's support following dfs sites:
+Now it supports following dfs sites:
 
-League | Yahoo | Fanduel | DraftKings | FantasyDraft 
------ | ----- | ----- | ----- | ----- 
-NFL | + | + | + | + 
-NBA | + | + | + | + 
-NHL | + | - | - | + 
-MLB | - | - | - | - 
+League | DraftKings | FanDuel | FantasyDraft | Yahoo | FanBall | DraftKing Captain Mode | FanDuel Single Game |
+------ | ---------- | ------- | ------------ | ----- | ------- | ---------------------- | ------------------- |
+NFL    | +          | +       | +            | +     | +       | +                      | +                   |
+NBA    | +          | +       | +            | +     | -       | +                      | +                   |
+NHL    | +          | +       | +            | +     | -       | -                      | -                   |
+MLB    | +          | +       | +            | +     | -       | +                      | -                   |
+WNBA   | +          | +       | -            | -     | -       | +                      | -                   |
+Golf   | +          | +       | +            | +     | -       | -                      | -                   |
+Soccer | +          | -       | -            | +     | -       | +                      | -                   |
+CFL    | +          | -       | -            | -     | -       | -                      | -                   |
+LOL    | -          | +       | -            | -     | -       | +                      | +                   |
+MMA    | +          | -       | -            | -     | -       | -                      | -                   |
+NASCAR | +          | -       | -            | -     | -       | -                      | -                   |
+Tennis | +          | -       | -            | -     | -       | -                      | -                   |
+
 
 ## Documentation
-Documentation is available at https://github.com/DimaKudosh/pydfs-lineup-optimizer/wiki
+Documentation is available at https://pydfs-lineup-optimizer.readthedocs.io/en/latest
 
 ## Example
-Here is a example for evaluating optimal lineup for Yahoo fantasy NBA. It's loads players list from "yahoo-NBA.csv" and select 10 best lineup with 4 Oklahoma City Thunder players.
+Here is an example for evaluating optimal lineup for Yahoo fantasy NBA. It loads players list from "yahoo-NBA.csv" and select 10 best lineups.
 ```python
-optimizer = LineupOptimizer(settings.YahooBasketballSettings)
-optimizer.load_players_from_CSV("yahoo-NBA.csv")
-for lineup in optimizer.optimize(n=10, teams={'OKC': 4}):
+from pydfs_lineup_optimizer import Site, Sport, get_optimizer
+
+
+optimizer = get_optimizer(Site.YAHOO, Sport.BASKETBALL)
+optimizer.load_players_from_csv("yahoo-NBA.csv")
+for lineup in optimizer.optimize(10):
     print(lineup)
-```
-Also you can use simple standard GUI:
-```python
-import pydfs_lineup_optimizer 
-pydfs_lineup_optimizer.run_app()
 ```
